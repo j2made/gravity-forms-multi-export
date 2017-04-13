@@ -589,30 +589,31 @@ function j2_gform_multi_id_field_textbox_callback( $args ) {
 
 }
 
-// if ( get_option('j2_gform_multi_id_field') ) {
+// Create Export
+if ( get_option('j2_gform_multi_id_field') ) {
 
-//   $id_str = get_option('j2_gform_multi_id_field');
-//   $id_str = str_replace( ' ', '', $id_str );
-//   $id_str = preg_replace('/\s+/', '', $id_str);
+  $id_str = get_option('j2_gform_multi_id_field');
+  $id_str = str_replace( ' ', '', $id_str );
+  $id_str = preg_replace('/\s+/', '', $id_str);
 
-//   if ( false !== strpos( $id_str, ',' ) ) {
-//     $ids = array_map( 'intval', explode( ',', $id_str ) );
-//   } else {
-//     $ids = array( $id_str );
-//   }
+  if ( false !== strpos( $id_str, ',' ) ) {
+    $ids = array_map( 'intval', explode( ',', $id_str ) );
+  } else {
+    $ids = array( $id_str );
+  }
 
-//   if ( is_array( $ids ) ) {
+  if ( is_array( $ids ) ) {
 
-//     new GW_Multi_Form_Entry_Exporter( array(
-//         'name'     => 'Gravity Forms Multi Export',
-//         'form_ids' => array( 1 )
-//     ) );
+    new GW_Multi_Form_Entry_Exporter( array(
+        'name'     => 'Gravity Forms Multi Export',
+        'form_ids' => $ids
+    ) );
 
-//   } else {
+  } else {
 
-//     return false;
+    return false;
 
-//   }
+  }
 
-// }
+}
 
